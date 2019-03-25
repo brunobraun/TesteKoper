@@ -1,0 +1,118 @@
+﻿<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+<div class="content mt-3">
+    <div class="col-xl-3 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <button class="btn bg-transparent dropdown-toggle theme-toggle" type="button" id="dropdownMediaInspecoesDiarias" data-toggle="dropdown" style="color: #007bff; padding: 0 !important; margin: 0 !important; margin-top: -10px !important;">
+                        <i class="fa fa-plus-circle"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMediaInspecoesDiarias">
+                        <div class="dropdown-menu-content">
+                            <a class="dropdown-item" href="#">Mais informações</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-text" style="font-size: 14px; color: #868e96;">Total empreendimentos</div>
+
+                <div class="stat-widget-one">
+                    <div class="stat-content dib" style="margin-bottom: 8px;">
+                        <div class="stat-digit" style="font-size: 16px;">
+                            <a id="totalEmpreendimentos" style="color: rgb(234,67,53);">...</a>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="stat-text" style="font-size: 14px; color: #868e96 !important;">Valor Total</div> 
+                <div class="stat-digit" style="color: gray !important;"><a id="valorTotalEmpreendimentos">...</a></div> 
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-xl-3 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <button class="btn bg-transparent dropdown-toggle theme-toggle" type="button" id="dropdownMediaInspecoesDiarias" data-toggle="dropdown" style="color: #007bff; padding: 0 !important; margin: 0 !important; margin-top: -10px !important;">
+                        <i class="fa fa-plus-circle"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMediaInspecoesDiarias">
+                        <div class="dropdown-menu-content">
+                            <a class="dropdown-item" href="#">Mais informações</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-text" style="font-size: 14px; color: #868e96;">Unidades Disponíveis</div>
+
+                <div class="stat-widget-one">
+                    <div class="stat-content dib" style="margin-bottom: 8px;">
+                        <div class="stat-digit" style="font-size: 16px;">
+                            <a id="unidadesDisponiveis" style="color: rgb(52,168,83);">...</a> 
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="stat-text" style="font-size: 14px; color: #868e96;">Unidades Indisponíveis</div>
+                <div class="stat-digit"><a id="unidadesIndisponiveis">...</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="dropdown float-right">
+                    <button class="btn bg-transparent dropdown-toggle theme-toggle" type="button" id="dropdownMediaInspecoesDiarias" data-toggle="dropdown" style="color: #007bff; padding: 0 !important; margin: 0 !important; margin-top: -10px !important;">
+                        <i class="fa fa-plus-circle"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMediaInspecoesDiarias">
+                        <div class="dropdown-menu-content">
+                            <a class="dropdown-item" href="#">Mais informações</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-text" style="font-size: 14px; color: #868e96;">Total Reservas</div>
+
+                <div class="stat-widget-one">
+                    <div class="stat-content dib" style="margin-bottom: 8px;">
+                        <div class="stat-digit" style="font-size: 16px;">
+                            <a id="totalReserva" style="color: rgb(52,168,83);">...</a>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="stat-text" style="font-size: 14px; color: #868e96;">Valor Total Reservas</div>
+                <div class="stat-digit">
+                    <a id="valorTotalReserva">...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $.get("/home/dashboard", function (data) {
+            $("#unidadesIndisponiveis").html(data.unidadesIndisponiveis);
+            $("#unidadesDisponiveis").html(data.unidadesDisponiveis);
+            $("#totalEmpreendimentos").html(data.totalEmpreendimentos);
+            $("#totalReserva").html(data.totalReserva);
+            $("#valorTotalReserva").html("R$ " + data.valorTotalReserva.toLocaleString('pt-BR'));
+            $("#valorTotalEmpreendimentos").html("R$ " + data.valorTotalEmpreendimentos.toLocaleString('pt-BR'));
+            
+            
+        });
+
+    });
+</script>

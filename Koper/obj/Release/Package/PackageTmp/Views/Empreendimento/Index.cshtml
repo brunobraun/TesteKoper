@@ -1,0 +1,126 @@
+﻿<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+<div class="content mt-3">
+    <div class="col-sm-12" style="text-align: center;">
+        <div class="card">
+            <div class="card-header bg-info  text-white">
+                <i>EMPREENDIMENTOS</i>
+            </div>
+            <div class="card-body">
+                <div style="align-items: flex-end; text-align: right;">
+                    <a class="btn btn-success" href="/empreendimento/criar">Novo Cadastro</a>
+                </div>
+                <hr />
+                <div style="align-content: center;align-items: center; text-align: center;">
+                    <table class="display" name="example" width="100%" cellspacing="0" id="tabela">
+                        <thead>
+                            <tr>
+                                <th class="details-control">
+
+                                </th>
+                                <th style="text-align: center;">
+                                    Nome
+                                </th>
+                                <th style="text-align: center;">
+                                    Tipo
+                                </th>
+                                <th style="text-align: center;">
+                                    Endereço
+                                </th>
+                                <th style="text-align: center;">
+                                    Área (m²)
+                                </th>
+                                <th style="text-align: right;">
+                                     
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.empreendimentos)
+                            {
+                                <tr>
+                                    <td class="details-control">
+                                        <img src="~/Imagens/mais.jpg" width="24" height="24" />
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @item.nome
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @item.Tipo_Empreendimento.tipo
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @item.endereco
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @item.area_total
+                                    </td>
+                                    <td style="text-align: right;">
+                                        <a href="/bloco/index?idEmpreendimento=@item.id" class="btn btn-success btn-sm">Blocos</a> 
+                                        @*<a href="/andar/index?idEmpreendimento=@item.id" class="btn btn-success btn-sm">Andares</a>*@ 
+                                        <a href="/unidade/index?idEmpreendimento=@item.id" class="btn btn-success btn-sm">Unidades</a>
+                                    </td>
+                                    <td>
+                                        <a href="#" onclick="return alert('Edição ainda não disponível.');">Editar</a> |
+                                        <a href="/empreendimento/excluir/@item.id" onclick="return confirm('Tem certeza que deseja excluir? Todos os Blocos/Andares/Unidades relacionados a esse registro serão excluídos.')">Excluir</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function format(d) {
+        // `d` is the original data object for the row
+        return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+
+            '<tr>' +
+                '<td>Campos</td>' +
+                '<td>Opção de mais informações sobre o empreendimento, blocos, andares, unidades, valores...</td>' +
+            '</tr>' +
+            '<tr>' +
+                '<td>Exemplo Unidades:</td>' +
+                '<td>5 Unidades Disponíveis, 4 Reservadas.. etc</td>' +
+            '</tr>' +
+        '</table>';
+    }
+
+        $(document).ready(function () {
+            var table = $("#tabela").DataTable({
+                "language": {
+                    "url": "/Scripts/datatable-ptbr.json"
+                }
+
+            });
+
+
+            $('#tabela tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    // Open this row
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+        });
+
+
+</script> 

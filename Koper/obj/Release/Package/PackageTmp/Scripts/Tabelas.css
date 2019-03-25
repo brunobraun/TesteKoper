@@ -1,0 +1,10 @@
+﻿tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
+
+tr.subgroup,
+tr.subgroup {
+   background-color: cornsilk !important;
+}
+

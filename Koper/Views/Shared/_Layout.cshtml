@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Koper</title>
+    <link rel="stylesheet" href="/Frontend/assets/css/normalize.css">
+    <link rel="stylesheet" href="/Frontend/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Frontend/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Frontend/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="/Frontend/assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="/Frontend/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="/Frontend/assets/scss/style.css">
+    <link href="/Frontend/assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSrdKjea1zrWV1HxVqgJ5g9bAUJrPRf9A&libraries=geometry"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="/Frontend/assets/js/plugins.js"></script>
+    <script src="/Frontend/assets/js/main.js"></script>
+
+    <script src="/Frontend/assets/js/lib/vector-map/jquery.vmap.js"></script>
+    <script src="/Frontend/assets/js/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="/Frontend/assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="/Frontend/assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+        }
+
+        /* Safari */
+        @@-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @@keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#" width="85" height="34">KOPER</a>
+                <a class="navbar-brand hidden" href="./"><img src="/Frontend/images/logo2.png" alt="Logo"></a>
+            </div>
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/home"> <i class="menu-icon fa fa-laptop"></i>Principal</a>
+                    </li>
+
+                    <h3 class="menu-title">Cadastro</h3>
+                    <li><a href="/empreendimento"> <i class="menu-icon fa fa-table"></i>Empreendimentos</a></li>
+                    <li><a href="/reserva"> <i class="menu-icon fa fa-table"></i>Reservas</a></li>
+                    @*<li><a href="/proposta"> <i class="menu-icon fa fa-table"></i>Propostas</a></li>
+                    <li><a href="/venda"> <i class="menu-icon fa fa-table"></i>Vendas</a></li>*@
+                    <li><a href="/cliente"> <i class="menu-icon fa fa-table"></i>Clientes</a></li>  
+
+                </ul>
+            </div>
+        </nav>
+    </aside>
+
+    <div id="right-panel" class="right-panel">
+        <header id="header" class="header">
+            <div class="header-menu">
+               
+                <div class="col-sm-12">
+
+                    <div class="user-area dropdown float-right">
+
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <b>Bruno Braun</b> <i class="fa fa-chevron-down"></i>
+                        </a>
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Sair</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </header>
+        @RenderBody()
+    </div>
+
+
+
+
+
+</body>
+</html>

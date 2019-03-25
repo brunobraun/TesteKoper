@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KoperModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Andar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="posicao" Type="int" Nullable="false" />
+    <Property Name="idBloco" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bloco">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="idEmpreendimento" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="cpf" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="data_nascimento" Type="date" Nullable="false" />
+    <Property Name="endereco" Type="varchar(max)" Nullable="false" />
+    <Property Name="renda" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empreendimento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="dataInicio" Type="date" Nullable="false" />
+    <Property Name="dataConclusao" Type="date" Nullable="false" />
+    <Property Name="idTipo_Empreendimento" Type="int" Nullable="false" />
+    <Property Name="endereco" Type="varchar(max)" Nullable="false" />
+    <Property Name="area_total" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Proposta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idReserva" Type="bigint" Nullable="false" />
+    <Property Name="forma_pagamento" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reserva">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCliente" Type="bigint" Nullable="false" />
+    <Property Name="data_reserva" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Status_Unidade">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Empreendimento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Unidade">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="idStatus_Unidade" Type="int" Nullable="false" />
+    <Property Name="area_privativa" Type="float" Nullable="false" />
+    <Property Name="area_comum" Type="float" Nullable="false" />
+    <Property Name="vendavel" Type="float" Nullable="false" />
+    <Property Name="valor" Type="float" Nullable="false" />
+    <Property Name="valor_minimo_venda" Type="float" Nullable="false" />
+    <Property Name="pertence_a_tipo" Type="int" Nullable="false" />
+    <Property Name="idAndar" Type="bigint" />
+    <Property Name="idBloco" Type="bigint" />
+    <Property Name="idEmpreendimento" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Unidade_Proposta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idProposta" Type="bigint" Nullable="false" />
+    <Property Name="idUnidade" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Unidade_Reserva">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUnidade" Type="bigint" Nullable="false" />
+    <Property Name="idReserva" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Unidade_Venda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idVenda" Type="bigint" Nullable="false" />
+    <Property Name="idUnidade" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Venda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCliente" Type="bigint" Nullable="false" />
+    <Property Name="data_venda" Type="date" Nullable="false" />
+    <Property Name="forma_pagamento" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Andar_Bloco">
+    <End Role="Bloco" Type="Self.Bloco" Multiplicity="1" />
+    <End Role="Andar" Type="Self.Andar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bloco">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Andar">
+        <PropertyRef Name="idBloco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bloco_Empreendimento">
+    <End Role="Empreendimento" Type="Self.Empreendimento" Multiplicity="1" />
+    <End Role="Bloco" Type="Self.Bloco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empreendimento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bloco">
+        <PropertyRef Name="idEmpreendimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empreendimento_Tipo_Empreendimento">
+    <End Role="Tipo_Empreendimento" Type="Self.Tipo_Empreendimento" Multiplicity="1" />
+    <End Role="Empreendimento" Type="Self.Empreendimento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Empreendimento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Empreendimento">
+        <PropertyRef Name="idTipo_Empreendimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proposta_Reserva">
+    <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+    <End Role="Proposta" Type="Self.Proposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reserva">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Proposta">
+        <PropertyRef Name="idReserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reserva_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Andar">
+    <End Role="Andar" Type="Self.Andar" Multiplicity="0..1" />
+    <End Role="Unidade" Type="Self.Unidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Andar">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade">
+        <PropertyRef Name="idAndar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Bloco">
+    <End Role="Bloco" Type="Self.Bloco" Multiplicity="0..1" />
+    <End Role="Unidade" Type="Self.Unidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bloco">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade">
+        <PropertyRef Name="idBloco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Empreendimento">
+    <End Role="Empreendimento" Type="Self.Empreendimento" Multiplicity="0..1" />
+    <End Role="Unidade" Type="Self.Unidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empreendimento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade">
+        <PropertyRef Name="idEmpreendimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Proposta_Proposta">
+    <End Role="Proposta" Type="Self.Proposta" Multiplicity="1" />
+    <End Role="Unidade_Proposta" Type="Self.Unidade_Proposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proposta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Proposta">
+        <PropertyRef Name="idProposta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Proposta_Unidade">
+    <End Role="Unidade" Type="Self.Unidade" Multiplicity="1" />
+    <End Role="Unidade_Proposta" Type="Self.Unidade_Proposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Proposta">
+        <PropertyRef Name="idUnidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Reserva_Reserva">
+    <End Role="Reserva" Type="Self.Reserva" Multiplicity="1" />
+    <End Role="Unidade_Reserva" Type="Self.Unidade_Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reserva">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Reserva">
+        <PropertyRef Name="idReserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Reserva_Unidade">
+    <End Role="Unidade" Type="Self.Unidade" Multiplicity="1" />
+    <End Role="Unidade_Reserva" Type="Self.Unidade_Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Reserva">
+        <PropertyRef Name="idUnidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Status_Unidade">
+    <End Role="Status_Unidade" Type="Self.Status_Unidade" Multiplicity="1" />
+    <End Role="Unidade" Type="Self.Unidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status_Unidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade">
+        <PropertyRef Name="idStatus_Unidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Venda_Unidade">
+    <End Role="Unidade" Type="Self.Unidade" Multiplicity="1" />
+    <End Role="Unidade_Venda" Type="Self.Unidade_Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Venda">
+        <PropertyRef Name="idUnidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Venda_Venda">
+    <End Role="Venda" Type="Self.Venda" Multiplicity="1" />
+    <End Role="Unidade_Venda" Type="Self.Unidade_Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Venda">
+        <PropertyRef Name="idVenda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venda_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Venda" Type="Self.Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KoperModelStoreContainer">
+    <EntitySet Name="Andar" EntityType="Self.Andar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bloco" EntityType="Self.Bloco" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empreendimento" EntityType="Self.Empreendimento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proposta" EntityType="Self.Proposta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status_Unidade" EntityType="Self.Status_Unidade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Empreendimento" EntityType="Self.Tipo_Empreendimento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unidade" EntityType="Self.Unidade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unidade_Proposta" EntityType="Self.Unidade_Proposta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unidade_Reserva" EntityType="Self.Unidade_Reserva" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unidade_Venda" EntityType="Self.Unidade_Venda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Venda" EntityType="Self.Venda" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Andar_Bloco" Association="Self.FK_Andar_Bloco">
+      <End Role="Bloco" EntitySet="Bloco" />
+      <End Role="Andar" EntitySet="Andar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bloco_Empreendimento" Association="Self.FK_Bloco_Empreendimento">
+      <End Role="Empreendimento" EntitySet="Empreendimento" />
+      <End Role="Bloco" EntitySet="Bloco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empreendimento_Tipo_Empreendimento" Association="Self.FK_Empreendimento_Tipo_Empreendimento">
+      <End Role="Tipo_Empreendimento" EntitySet="Tipo_Empreendimento" />
+      <End Role="Empreendimento" EntitySet="Empreendimento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proposta_Reserva" Association="Self.FK_Proposta_Reserva">
+      <End Role="Reserva" EntitySet="Reserva" />
+      <End Role="Proposta" EntitySet="Proposta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reserva_Cliente" Association="Self.FK_Reserva_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Andar" Association="Self.FK_Unidade_Andar">
+      <End Role="Andar" EntitySet="Andar" />
+      <End Role="Unidade" EntitySet="Unidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Bloco" Association="Self.FK_Unidade_Bloco">
+      <End Role="Bloco" EntitySet="Bloco" />
+      <End Role="Unidade" EntitySet="Unidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Empreendimento" Association="Self.FK_Unidade_Empreendimento">
+      <End Role="Empreendimento" EntitySet="Empreendimento" />
+      <End Role="Unidade" EntitySet="Unidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Proposta_Proposta" Association="Self.FK_Unidade_Proposta_Proposta">
+      <End Role="Proposta" EntitySet="Proposta" />
+      <End Role="Unidade_Proposta" EntitySet="Unidade_Proposta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Proposta_Unidade" Association="Self.FK_Unidade_Proposta_Unidade">
+      <End Role="Unidade" EntitySet="Unidade" />
+      <End Role="Unidade_Proposta" EntitySet="Unidade_Proposta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Reserva_Reserva" Association="Self.FK_Unidade_Reserva_Reserva">
+      <End Role="Reserva" EntitySet="Reserva" />
+      <End Role="Unidade_Reserva" EntitySet="Unidade_Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Reserva_Unidade" Association="Self.FK_Unidade_Reserva_Unidade">
+      <End Role="Unidade" EntitySet="Unidade" />
+      <End Role="Unidade_Reserva" EntitySet="Unidade_Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Status_Unidade" Association="Self.FK_Unidade_Status_Unidade">
+      <End Role="Status_Unidade" EntitySet="Status_Unidade" />
+      <End Role="Unidade" EntitySet="Unidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Venda_Unidade" Association="Self.FK_Unidade_Venda_Unidade">
+      <End Role="Unidade" EntitySet="Unidade" />
+      <End Role="Unidade_Venda" EntitySet="Unidade_Venda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Venda_Venda" Association="Self.FK_Unidade_Venda_Venda">
+      <End Role="Venda" EntitySet="Venda" />
+      <End Role="Unidade_Venda" EntitySet="Unidade_Venda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venda_Cliente" Association="Self.FK_Venda_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Venda" EntitySet="Venda" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

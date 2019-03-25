@@ -1,0 +1,82 @@
+﻿<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+
+<div class="content mt-3">
+    <div class="col-sm-12" style="text-align: center;">
+        <div class="card">
+            <div class="card-header bg-info  text-white">
+                <i>Reservas</i>
+            </div>
+            <div class="card-body">
+                <div style="align-items: flex-end; text-align: right;">
+                    <a class="btn btn-success" href="/reserva/criar">Novo Cadastro</a>
+                </div>
+                <hr />
+                <div style="align-content: center;align-items: center; text-align: center;">
+                    <table class="display" name="example" width="100%" cellspacing="0" id="tabela">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">
+                                    Cliente
+                                </th>
+                                <th style="text-align: center;">
+                                    Data Reserva
+                                </th>
+                                <th style="text-align: center;">
+                                    Valor Total
+                                </th>
+                                @*<th style="text-align: right;">
+
+                                </th>*@
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.reservas)
+                            {
+                                <tr>
+                                    <td style="text-align: center;">
+                                        @item.nome_cliente
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @item.data_reserva
+                                    </td>
+                                    <td style="text-align: center;">
+                                        @item.valor_total
+                                    </td>
+                                    @*<td style="text-align: right;">
+                                        <a href="/bloco/index?idEmpreendimento=@item.id" class="btn btn-success btn-sm">Blocos</a>
+                                        <a href="/andar/index?idEmpreendimento=@item.id" class="btn btn-success btn-sm">Andares</a>
+                                        <a href="/unidade/index?idEmpreendimento=@item.id" class="btn btn-success btn-sm">Unidades</a>
+                                    </td>*@
+                                    <td>
+                                       
+                                        <a href="/reserva/excluir?idReserva=@item.id" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+        $(document).ready(function () {
+            $("#tabela").DataTable({
+                "language": {
+                    "url": "/Scripts/datatable-ptbr.json"
+                }
+
+            });
+        });
+
+
+</script> 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17a6cdff9cea4da9946b70f314abaec6" Name="Diagram1">
+        <EntityTypeShape EntityType="KoperModel.Andar" Width="1.5" PointX="7.5" PointY="3.875" />
+        <EntityTypeShape EntityType="KoperModel.Bloco" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="KoperModel.Cliente" Width="1.5" PointX="7.5" PointY="8.875" />
+        <EntityTypeShape EntityType="KoperModel.Empreendimento" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="KoperModel.Proposta" Width="1.5" PointX="9.75" PointY="12.875" />
+        <EntityTypeShape EntityType="KoperModel.Reserva" Width="1.5" PointX="9.75" PointY="9" />
+        <EntityTypeShape EntityType="KoperModel.Status_Unidade" Width="1.5" PointX="7.5" PointY="1.125" />
+        <EntityTypeShape EntityType="KoperModel.Tipo_Empreendimento" Width="1.5" PointX="0.75" PointY="4.125" />
+        <EntityTypeShape EntityType="KoperModel.Unidade" Width="1.5" PointX="9.75" PointY="2.625" />
+        <EntityTypeShape EntityType="KoperModel.Unidade_Proposta" Width="1.5" PointX="12" PointY="3.875" />
+        <EntityTypeShape EntityType="KoperModel.Unidade_Reserva" Width="1.5" PointX="12" PointY="0.875" />
+        <EntityTypeShape EntityType="KoperModel.Unidade_Venda" Width="1.5" PointX="12" PointY="6.875" />
+        <EntityTypeShape EntityType="KoperModel.Venda" Width="1.5" PointX="9.75" PointY="15.875" />
+        <AssociationConnector Association="KoperModel.FK_Andar_Bloco" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Andar" />
+        <AssociationConnector Association="KoperModel.FK_Bloco_Empreendimento" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Bloco" />
+        <AssociationConnector Association="KoperModel.FK_Reserva_Cliente" />
+        <AssociationConnector Association="KoperModel.FK_Venda_Cliente" />
+        <AssociationConnector Association="KoperModel.FK_Empreendimento_Tipo_Empreendimento" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Empreendimento" />
+        <AssociationConnector Association="KoperModel.FK_Proposta_Reserva" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Proposta_Proposta" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Reserva_Reserva" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Status_Unidade" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Proposta_Unidade" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Reserva_Unidade" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Venda_Unidade" />
+        <AssociationConnector Association="KoperModel.FK_Unidade_Venda_Venda" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

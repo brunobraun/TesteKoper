@@ -1,0 +1,107 @@
+﻿<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+<link href="~/Scripts/Tabelas.css" rel="stylesheet" />
+
+<div class="content mt-3">
+    <div class="col-sm-12" style="text-align: center;">
+        <div class="card">
+            <div class="card-header bg-info  text-white">
+                <i>UNIDADES</i>
+            </div>
+            <div class="card-body">
+                <div style="align-items: flex-end; text-align: right;">
+                    <a class="btn btn-success" href="/unidade/criar">Novo Cadastro</a>
+                </div>
+                <hr />
+                <div>
+                    <table class="display" name="example" width="100%" id="tabela">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th style="text-align: left;">
+                                    Nome Unidade
+                                </th>
+                                <th>
+                                    Andar
+                                </th>
+                                <th>
+                                    Bloco
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.unidades)
+                            {
+                                <tr>
+                                    <td>
+                                        <span class="badge badge-primary">@item.status</span>
+                                        
+                                    </td>
+                                    <td style="text-align: left;">
+                                        @item.nome
+                                    </td>
+                                    <td style="color: transparent;">
+                                        @item.andar
+                                    </td>
+                                    <td style="color: transparent;">
+                                        @item.bloco
+                                    </td>
+                                    <td>
+                                        
+                                        <a href="/unidade/excluir?idUnidade=@item.id" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+        $(document).ready(function () {
+            var table = $('#tabela').DataTable({
+                "order": [[3, 'asc'], [2, 'asc']],
+                "asStripeClasses": [],
+                "language": {
+                    "url": "/Scripts/datatable-ptbr.json"
+                },
+
+                drawCallback: function (settings) {
+                    var api = this.api();
+
+                    var tableRows = api.rows({ page: 'current' }).nodes();
+                    var lastGroup = null;
+                    var lastSub = null;
+                    var mySubGroup = null;
+                    $(tableRows).each(function () {
+                        groupName = this.cells[3].innerHTML;
+                        mySubGroup = this.cells[2].innerHTML;
+
+                        if (lastGroup !== groupName) {
+                            $(this).before('<tr class="group"><td colspan="6">' + groupName + '</td></tr>');
+                            lastGroup = groupName;
+                        }
+                        if (lastSub !== mySubGroup) {
+                            console.log(mySubGroup);
+                            $(this).before('<tr class="subgroup"><td colspan="6">' + mySubGroup + '</td></tr>');
+                            lastSub = mySubGroup;
+                        }
+                    });
+                }
+
+
+
+            });
+        });
+
+
+</script> 

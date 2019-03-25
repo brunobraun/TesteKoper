@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KoperModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="KoperEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Andar" EntityType="KoperModel.Andar" />
+    <EntitySet Name="Bloco" EntityType="KoperModel.Bloco" />
+    <EntitySet Name="Cliente" EntityType="KoperModel.Cliente" />
+    <EntitySet Name="Empreendimento" EntityType="KoperModel.Empreendimento" />
+    <EntitySet Name="Proposta" EntityType="KoperModel.Proposta" />
+    <EntitySet Name="Reserva" EntityType="KoperModel.Reserva" />
+    <EntitySet Name="Status_Unidade" EntityType="KoperModel.Status_Unidade" />
+    <EntitySet Name="Tipo_Empreendimento" EntityType="KoperModel.Tipo_Empreendimento" />
+    <EntitySet Name="Unidade" EntityType="KoperModel.Unidade" />
+    <EntitySet Name="Unidade_Proposta" EntityType="KoperModel.Unidade_Proposta" />
+    <EntitySet Name="Unidade_Reserva" EntityType="KoperModel.Unidade_Reserva" />
+    <EntitySet Name="Unidade_Venda" EntityType="KoperModel.Unidade_Venda" />
+    <EntitySet Name="Venda" EntityType="KoperModel.Venda" />
+    <AssociationSet Name="FK_Andar_Bloco" Association="KoperModel.FK_Andar_Bloco">
+      <End Role="Bloco" EntitySet="Bloco" />
+      <End Role="Andar" EntitySet="Andar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Andar" Association="KoperModel.FK_Unidade_Andar">
+      <End Role="Andar" EntitySet="Andar" />
+      <End Role="Unidade" EntitySet="Unidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bloco_Empreendimento" Association="KoperModel.FK_Bloco_Empreendimento">
+      <End Role="Empreendimento" EntitySet="Empreendimento" />
+      <End Role="Bloco" EntitySet="Bloco" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Bloco" Association="KoperModel.FK_Unidade_Bloco">
+      <End Role="Bloco" EntitySet="Bloco" />
+      <End Role="Unidade" EntitySet="Unidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Reserva_Cliente" Association="KoperModel.FK_Reserva_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Reserva" EntitySet="Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Venda_Cliente" Association="KoperModel.FK_Venda_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Venda" EntitySet="Venda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Empreendimento_Tipo_Empreendimento" Association="KoperModel.FK_Empreendimento_Tipo_Empreendimento">
+      <End Role="Tipo_Empreendimento" EntitySet="Tipo_Empreendimento" />
+      <End Role="Empreendimento" EntitySet="Empreendimento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Empreendimento" Association="KoperModel.FK_Unidade_Empreendimento">
+      <End Role="Empreendimento" EntitySet="Empreendimento" />
+      <End Role="Unidade" EntitySet="Unidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Proposta_Reserva" Association="KoperModel.FK_Proposta_Reserva">
+      <End Role="Reserva" EntitySet="Reserva" />
+      <End Role="Proposta" EntitySet="Proposta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Proposta_Proposta" Association="KoperModel.FK_Unidade_Proposta_Proposta">
+      <End Role="Proposta" EntitySet="Proposta" />
+      <End Role="Unidade_Proposta" EntitySet="Unidade_Proposta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Reserva_Reserva" Association="KoperModel.FK_Unidade_Reserva_Reserva">
+      <End Role="Reserva" EntitySet="Reserva" />
+      <End Role="Unidade_Reserva" EntitySet="Unidade_Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Status_Unidade" Association="KoperModel.FK_Unidade_Status_Unidade">
+      <End Role="Status_Unidade" EntitySet="Status_Unidade" />
+      <End Role="Unidade" EntitySet="Unidade" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Proposta_Unidade" Association="KoperModel.FK_Unidade_Proposta_Unidade">
+      <End Role="Unidade" EntitySet="Unidade" />
+      <End Role="Unidade_Proposta" EntitySet="Unidade_Proposta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Reserva_Unidade" Association="KoperModel.FK_Unidade_Reserva_Unidade">
+      <End Role="Unidade" EntitySet="Unidade" />
+      <End Role="Unidade_Reserva" EntitySet="Unidade_Reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Venda_Unidade" Association="KoperModel.FK_Unidade_Venda_Unidade">
+      <End Role="Unidade" EntitySet="Unidade" />
+      <End Role="Unidade_Venda" EntitySet="Unidade_Venda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidade_Venda_Venda" Association="KoperModel.FK_Unidade_Venda_Venda">
+      <End Role="Venda" EntitySet="Venda" />
+      <End Role="Unidade_Venda" EntitySet="Unidade_Venda" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Andar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="posicao" Type="Int32" Nullable="false" />
+    <Property Name="idBloco" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Bloco" Relationship="KoperModel.FK_Andar_Bloco" FromRole="Andar" ToRole="Bloco" />
+    <NavigationProperty Name="Unidade" Relationship="KoperModel.FK_Unidade_Andar" FromRole="Andar" ToRole="Unidade" />
+  </EntityType>
+  <EntityType Name="Bloco">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="idEmpreendimento" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Andar" Relationship="KoperModel.FK_Andar_Bloco" FromRole="Bloco" ToRole="Andar" />
+    <NavigationProperty Name="Empreendimento" Relationship="KoperModel.FK_Bloco_Empreendimento" FromRole="Bloco" ToRole="Empreendimento" />
+    <NavigationProperty Name="Unidade" Relationship="KoperModel.FK_Unidade_Bloco" FromRole="Bloco" ToRole="Unidade" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="cpf" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="data_nascimento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="endereco" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="renda" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Reserva" Relationship="KoperModel.FK_Reserva_Cliente" FromRole="Cliente" ToRole="Reserva" />
+    <NavigationProperty Name="Venda" Relationship="KoperModel.FK_Venda_Cliente" FromRole="Cliente" ToRole="Venda" />
+  </EntityType>
+  <EntityType Name="Empreendimento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="dataInicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="dataConclusao" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idTipo_Empreendimento" Type="Int32" Nullable="false" />
+    <Property Name="endereco" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="area_total" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Bloco" Relationship="KoperModel.FK_Bloco_Empreendimento" FromRole="Empreendimento" ToRole="Bloco" />
+    <NavigationProperty Name="Tipo_Empreendimento" Relationship="KoperModel.FK_Empreendimento_Tipo_Empreendimento" FromRole="Empreendimento" ToRole="Tipo_Empreendimento" />
+    <NavigationProperty Name="Unidade" Relationship="KoperModel.FK_Unidade_Empreendimento" FromRole="Empreendimento" ToRole="Unidade" />
+  </EntityType>
+  <EntityType Name="Proposta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idReserva" Type="Int64" Nullable="false" />
+    <Property Name="forma_pagamento" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Reserva" Relationship="KoperModel.FK_Proposta_Reserva" FromRole="Proposta" ToRole="Reserva" />
+    <NavigationProperty Name="Unidade_Proposta" Relationship="KoperModel.FK_Unidade_Proposta_Proposta" FromRole="Proposta" ToRole="Unidade_Proposta" />
+  </EntityType>
+  <EntityType Name="Reserva">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int64" Nullable="false" />
+    <Property Name="data_reserva" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Cliente" Relationship="KoperModel.FK_Reserva_Cliente" FromRole="Reserva" ToRole="Cliente" />
+    <NavigationProperty Name="Proposta" Relationship="KoperModel.FK_Proposta_Reserva" FromRole="Reserva" ToRole="Proposta" />
+    <NavigationProperty Name="Unidade_Reserva" Relationship="KoperModel.FK_Unidade_Reserva_Reserva" FromRole="Reserva" ToRole="Unidade_Reserva" />
+  </EntityType>
+  <EntityType Name="Status_Unidade">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Unidade" Relationship="KoperModel.FK_Unidade_Status_Unidade" FromRole="Status_Unidade" ToRole="Unidade" />
+  </EntityType>
+  <EntityType Name="Tipo_Empreendimento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipo" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Empreendimento" Relationship="KoperModel.FK_Empreendimento_Tipo_Empreendimento" FromRole="Tipo_Empreendimento" ToRole="Empreendimento" />
+  </EntityType>
+  <EntityType Name="Unidade">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="idStatus_Unidade" Type="Int32" Nullable="false" />
+    <Property Name="area_privativa" Type="Double" Nullable="false" />
+    <Property Name="area_comum" Type="Double" Nullable="false" />
+    <Property Name="vendavel" Type="Double" Nullable="false" />
+    <Property Name="valor" Type="Double" Nullable="false" />
+    <Property Name="valor_minimo_venda" Type="Double" Nullable="false" />
+    <Property Name="pertence_a_tipo" Type="Int32" Nullable="false" />
+    <Property Name="idAndar" Type="Int64" />
+    <Property Name="idBloco" Type="Int64" />
+    <Property Name="idEmpreendimento" Type="Int64" />
+    <NavigationProperty Name="Andar" Relationship="KoperModel.FK_Unidade_Andar" FromRole="Unidade" ToRole="Andar" />
+    <NavigationProperty Name="Bloco" Relationship="KoperModel.FK_Unidade_Bloco" FromRole="Unidade" ToRole="Bloco" />
+    <NavigationProperty Name="Empreendimento" Relationship="KoperModel.FK_Unidade_Empreendimento" FromRole="Unidade" ToRole="Empreendimento" />
+    <NavigationProperty Name="Status_Unidade" Relationship="KoperModel.FK_Unidade_Status_Unidade" FromRole="Unidade" ToRole="Status_Unidade" />
+    <NavigationProperty Name="Unidade_Proposta" Relationship="KoperModel.FK_Unidade_Proposta_Unidade" FromRole="Unidade" ToRole="Unidade_Proposta" />
+    <NavigationProperty Name="Unidade_Reserva" Relationship="KoperModel.FK_Unidade_Reserva_Unidade" FromRole="Unidade" ToRole="Unidade_Reserva" />
+    <NavigationProperty Name="Unidade_Venda" Relationship="KoperModel.FK_Unidade_Venda_Unidade" FromRole="Unidade" ToRole="Unidade_Venda" />
+  </EntityType>
+  <EntityType Name="Unidade_Proposta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idProposta" Type="Int64" Nullable="false" />
+    <Property Name="idUnidade" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Proposta" Relationship="KoperModel.FK_Unidade_Proposta_Proposta" FromRole="Unidade_Proposta" ToRole="Proposta" />
+    <NavigationProperty Name="Unidade" Relationship="KoperModel.FK_Unidade_Proposta_Unidade" FromRole="Unidade_Proposta" ToRole="Unidade" />
+  </EntityType>
+  <EntityType Name="Unidade_Reserva">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUnidade" Type="Int64" Nullable="false" />
+    <Property Name="idReserva" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Reserva" Relationship="KoperModel.FK_Unidade_Reserva_Reserva" FromRole="Unidade_Reserva" ToRole="Reserva" />
+    <NavigationProperty Name="Unidade" Relationship="KoperModel.FK_Unidade_Reserva_Unidade" FromRole="Unidade_Reserva" ToRole="Unidade" />
+  </EntityType>
+  <EntityType Name="Unidade_Venda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idVenda" Type="Int64" Nullable="false" />
+    <Property Name="idUnidade" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Unidade" Relationship="KoperModel.FK_Unidade_Venda_Unidade" FromRole="Unidade_Venda" ToRole="Unidade" />
+    <NavigationProperty Name="Venda" Relationship="KoperModel.FK_Unidade_Venda_Venda" FromRole="Unidade_Venda" ToRole="Venda" />
+  </EntityType>
+  <EntityType Name="Venda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCliente" Type="Int64" Nullable="false" />
+    <Property Name="data_venda" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="forma_pagamento" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cliente" Relationship="KoperModel.FK_Venda_Cliente" FromRole="Venda" ToRole="Cliente" />
+    <NavigationProperty Name="Unidade_Venda" Relationship="KoperModel.FK_Unidade_Venda_Venda" FromRole="Venda" ToRole="Unidade_Venda" />
+  </EntityType>
+  <Association Name="FK_Andar_Bloco">
+    <End Type="KoperModel.Bloco" Role="Bloco" Multiplicity="1" />
+    <End Type="KoperModel.Andar" Role="Andar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bloco">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Andar">
+        <PropertyRef Name="idBloco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Andar">
+    <End Type="KoperModel.Andar" Role="Andar" Multiplicity="0..1" />
+    <End Type="KoperModel.Unidade" Role="Unidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Andar">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade">
+        <PropertyRef Name="idAndar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bloco_Empreendimento">
+    <End Type="KoperModel.Empreendimento" Role="Empreendimento" Multiplicity="1" />
+    <End Type="KoperModel.Bloco" Role="Bloco" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empreendimento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Bloco">
+        <PropertyRef Name="idEmpreendimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Bloco">
+    <End Type="KoperModel.Bloco" Role="Bloco" Multiplicity="0..1" />
+    <End Type="KoperModel.Unidade" Role="Unidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bloco">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade">
+        <PropertyRef Name="idBloco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Reserva_Cliente">
+    <End Type="KoperModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="KoperModel.Reserva" Role="Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Reserva">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Venda_Cliente">
+    <End Type="KoperModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="KoperModel.Venda" Role="Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Venda">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Empreendimento_Tipo_Empreendimento">
+    <End Type="KoperModel.Tipo_Empreendimento" Role="Tipo_Empreendimento" Multiplicity="1" />
+    <End Type="KoperModel.Empreendimento" Role="Empreendimento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Empreendimento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Empreendimento">
+        <PropertyRef Name="idTipo_Empreendimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Empreendimento">
+    <End Type="KoperModel.Empreendimento" Role="Empreendimento" Multiplicity="0..1" />
+    <End Type="KoperModel.Unidade" Role="Unidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empreendimento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade">
+        <PropertyRef Name="idEmpreendimento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Proposta_Reserva">
+    <End Type="KoperModel.Reserva" Role="Reserva" Multiplicity="1" />
+    <End Type="KoperModel.Proposta" Role="Proposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reserva">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Proposta">
+        <PropertyRef Name="idReserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Proposta_Proposta">
+    <End Type="KoperModel.Proposta" Role="Proposta" Multiplicity="1" />
+    <End Type="KoperModel.Unidade_Proposta" Role="Unidade_Proposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proposta">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Proposta">
+        <PropertyRef Name="idProposta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Reserva_Reserva">
+    <End Type="KoperModel.Reserva" Role="Reserva" Multiplicity="1" />
+    <End Type="KoperModel.Unidade_Reserva" Role="Unidade_Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reserva">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Reserva">
+        <PropertyRef Name="idReserva" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Status_Unidade">
+    <End Type="KoperModel.Status_Unidade" Role="Status_Unidade" Multiplicity="1" />
+    <End Type="KoperModel.Unidade" Role="Unidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status_Unidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade">
+        <PropertyRef Name="idStatus_Unidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Proposta_Unidade">
+    <End Type="KoperModel.Unidade" Role="Unidade" Multiplicity="1" />
+    <End Type="KoperModel.Unidade_Proposta" Role="Unidade_Proposta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Proposta">
+        <PropertyRef Name="idUnidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Reserva_Unidade">
+    <End Type="KoperModel.Unidade" Role="Unidade" Multiplicity="1" />
+    <End Type="KoperModel.Unidade_Reserva" Role="Unidade_Reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Reserva">
+        <PropertyRef Name="idUnidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Venda_Unidade">
+    <End Type="KoperModel.Unidade" Role="Unidade" Multiplicity="1" />
+    <End Type="KoperModel.Unidade_Venda" Role="Unidade_Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Venda">
+        <PropertyRef Name="idUnidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidade_Venda_Venda">
+    <End Type="KoperModel.Venda" Role="Venda" Multiplicity="1" />
+    <End Type="KoperModel.Unidade_Venda" Role="Unidade_Venda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Venda">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Unidade_Venda">
+        <PropertyRef Name="idVenda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

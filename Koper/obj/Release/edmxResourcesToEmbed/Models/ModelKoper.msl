@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KoperModelStoreContainer" CdmEntityContainer="KoperEntities">
+    <EntitySetMapping Name="Andar">
+      <EntityTypeMapping TypeName="KoperModel.Andar">
+        <MappingFragment StoreEntitySet="Andar">
+          <ScalarProperty Name="idBloco" ColumnName="idBloco" />
+          <ScalarProperty Name="posicao" ColumnName="posicao" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bloco">
+      <EntityTypeMapping TypeName="KoperModel.Bloco">
+        <MappingFragment StoreEntitySet="Bloco">
+          <ScalarProperty Name="idEmpreendimento" ColumnName="idEmpreendimento" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cliente">
+      <EntityTypeMapping TypeName="KoperModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="renda" ColumnName="renda" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="data_nascimento" ColumnName="data_nascimento" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empreendimento">
+      <EntityTypeMapping TypeName="KoperModel.Empreendimento">
+        <MappingFragment StoreEntitySet="Empreendimento">
+          <ScalarProperty Name="area_total" ColumnName="area_total" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="idTipo_Empreendimento" ColumnName="idTipo_Empreendimento" />
+          <ScalarProperty Name="dataConclusao" ColumnName="dataConclusao" />
+          <ScalarProperty Name="dataInicio" ColumnName="dataInicio" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proposta">
+      <EntityTypeMapping TypeName="KoperModel.Proposta">
+        <MappingFragment StoreEntitySet="Proposta">
+          <ScalarProperty Name="forma_pagamento" ColumnName="forma_pagamento" />
+          <ScalarProperty Name="idReserva" ColumnName="idReserva" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reserva">
+      <EntityTypeMapping TypeName="KoperModel.Reserva">
+        <MappingFragment StoreEntitySet="Reserva">
+          <ScalarProperty Name="data_reserva" ColumnName="data_reserva" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status_Unidade">
+      <EntityTypeMapping TypeName="KoperModel.Status_Unidade">
+        <MappingFragment StoreEntitySet="Status_Unidade">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Empreendimento">
+      <EntityTypeMapping TypeName="KoperModel.Tipo_Empreendimento">
+        <MappingFragment StoreEntitySet="Tipo_Empreendimento">
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unidade">
+      <EntityTypeMapping TypeName="KoperModel.Unidade">
+        <MappingFragment StoreEntitySet="Unidade">
+          <ScalarProperty Name="idEmpreendimento" ColumnName="idEmpreendimento" />
+          <ScalarProperty Name="idBloco" ColumnName="idBloco" />
+          <ScalarProperty Name="idAndar" ColumnName="idAndar" />
+          <ScalarProperty Name="pertence_a_tipo" ColumnName="pertence_a_tipo" />
+          <ScalarProperty Name="valor_minimo_venda" ColumnName="valor_minimo_venda" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="vendavel" ColumnName="vendavel" />
+          <ScalarProperty Name="area_comum" ColumnName="area_comum" />
+          <ScalarProperty Name="area_privativa" ColumnName="area_privativa" />
+          <ScalarProperty Name="idStatus_Unidade" ColumnName="idStatus_Unidade" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unidade_Proposta">
+      <EntityTypeMapping TypeName="KoperModel.Unidade_Proposta">
+        <MappingFragment StoreEntitySet="Unidade_Proposta">
+          <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+          <ScalarProperty Name="idProposta" ColumnName="idProposta" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unidade_Reserva">
+      <EntityTypeMapping TypeName="KoperModel.Unidade_Reserva">
+        <MappingFragment StoreEntitySet="Unidade_Reserva">
+          <ScalarProperty Name="idReserva" ColumnName="idReserva" />
+          <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unidade_Venda">
+      <EntityTypeMapping TypeName="KoperModel.Unidade_Venda">
+        <MappingFragment StoreEntitySet="Unidade_Venda">
+          <ScalarProperty Name="idUnidade" ColumnName="idUnidade" />
+          <ScalarProperty Name="idVenda" ColumnName="idVenda" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Venda">
+      <EntityTypeMapping TypeName="KoperModel.Venda">
+        <MappingFragment StoreEntitySet="Venda">
+          <ScalarProperty Name="forma_pagamento" ColumnName="forma_pagamento" />
+          <ScalarProperty Name="data_venda" ColumnName="data_venda" />
+          <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
